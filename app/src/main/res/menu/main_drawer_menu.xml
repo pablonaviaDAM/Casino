@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_inicio"
+            android:icon="@drawable/home"
+            android:title="Inicio" />
+        <item
+            android:id="@+id/nav_datos"
+            android:icon="@drawable/user"
+            android:title="Datos personales" />
+        <item
+            android:id="@+id/nav_ruleta"
+            android:icon="@drawable/ruleta"
+            android:title="Ruleta" />
+        <item
+            android:id="@+id/nav_jackpot"
+            android:icon="@drawable/slot_machine"
+            android:title="Jackpot" />
+        <item
+            android:id="@+id/nav_blackjack"
+            android:icon="@drawable/black_jack"
+            android:title="BlackJack" />
+        <item
+            android:id="@+id/nav_trofeos"
+            android:icon="@drawable/trofeo"
+            android:title="Trofeos" />
+        <item
+            android:id="@+id/nav_cerrarsesion"
+            android:icon="@drawable/baseline_door_front_24"
+            android:title="Cerrar sesión" />
+
+    </group>
+
+</menu>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B4B4B4"
+    tools:context=".Inicio_Activity">
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="278dp"
+        android:layout_height="218dp"
+        android:contentDescription="logo_casino"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.153"
+        app:srcCompat="@drawable/logocasino"
+        tools:ignore="HardcodedText" />
+
+    <ImageButton
+        android:id="@+id/btSlots"
+        android:layout_width="117dp"
+        android:layout_height="106dp"
+        android:layout_marginBottom="216dp"
+        android:background="@drawable/boton_juego"
+        android:contentDescription="boton_slots"
+        android:paddingStart="5sp"
+        android:paddingTop="10sp"
+        android:paddingEnd="3sp"
+        android:paddingBottom="10sp"
+        android:scaleType="fitCenter"
+        android:onClick="onButtonSlotsClicked"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.843"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/logoslots"
+        tools:ignore="HardcodedText" />
+
+    <ImageButton
+        android:id="@+id/btRuleta"
+        android:layout_width="117dp"
+        android:layout_height="106dp"
+        android:layout_marginBottom="216dp"
+        android:background="@drawable/boton_juego"
+        android:contentDescription="boton_ruleta"
+        android:scaleType="fitCenter"
+        android:onClick="onButtonRuletaClicked"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/logoruleta"
+        tools:ignore="HardcodedText" />
+
+    <ImageButton
+        android:id="@+id/btBlackJack"
+        android:layout_width="117dp"
+        android:layout_height="106dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/boton_juego"
+        android:contentDescription="boton_blackjack"
+        android:paddingStart="5sp"
+        android:paddingTop="10sp"
+        android:paddingEnd="3sp"
+        android:paddingBottom="10sp"
+        android:scaleType="fitCenter"
+        android:onClick="onButtonBlackJackClicked"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/logoblackjack"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/droid_serif"
+        android:text="Ruleta"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/btRuleta"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="@+id/btRuleta"
+        app:layout_constraintTop_toBottomOf="@+id/btRuleta"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/droid_serif"
+        android:text="BlackJack"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/btBlackJack"
+        app:layout_constraintStart_toStartOf="@+id/btBlackJack"
+        app:layout_constraintTop_toBottomOf="@+id/btBlackJack"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/droid_serif"
+        android:text="Slots"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/btSlots"
+        app:layout_constraintStart_toStartOf="@+id/btSlots"
+        app:layout_constraintTop_toBottomOf="@+id/btSlots"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tvJuegos"
+        android:layout_width="411dp"
+        android:layout_height="46dp"
+        android:background="@drawable/bg_gradient"
+        android:fontFamily="sans-serif"
+        android:paddingLeft="39sp"
+        android:paddingTop="5sp"
+        android:paddingRight="39sp"
+        android:text="Juegos"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.489"
+        tools:ignore="HardcodedText" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
