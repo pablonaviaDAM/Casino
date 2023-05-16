@@ -8,66 +8,7 @@
     tools:context=".Registro_Activity">
 
     <TextView
-        android:id="@+id/tvFechaNacimiento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="480dp"
-        android:text="Fecha de nacmiento"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/etFecha"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etDNI"
-        android:layout_width="330dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="416dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tvFechaNacimiento"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvDNI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="384dp"
-        android:text="DNI"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/etDNI"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etApellidos"
-        android:layout_width="331dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="324dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tvDNI"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvApellidos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="292dp"
-        android:text="Apellidos"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/etApellidos"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvNumPag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -77,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/tvTitulo"
@@ -90,20 +32,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.256"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etNombre"
-        android:layout_width="330dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="232dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.033"
-        app:layout_constraintStart_toStartOf="@+id/tvApellidos"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/tvNombre"
@@ -114,27 +44,117 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/etNombre"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
-    <Button
-        android:id="@+id/button3"
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="330dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="232dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="Introduce tu nombre"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.033"
+        app:layout_constraintStart_toStartOf="@+id/tvApellidos"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/tvApellidos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="596dp"
-        android:backgroundTint="#4F4E4E"
-        android:text="Aceptar"
+        android:layout_marginTop="292dp"
+        android:text="Apellidos"
+        android:textColor="@color/white"
         android:textSize="16sp"
-        android:textStyle="bold"
-        app:cornerRadius="20dp"
+        app:layout_constraintStart_toStartOf="@+id/etApellidos"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/etApellidos"
+        android:layout_width="331dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="324dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="Introduce tus apellidos"
+        android:inputType="textPersonName"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.785"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvDNI"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/tvDNI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="384dp"
+        android:text="DNI"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/etDNI"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/etDNI"
+        android:layout_width="330dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="416dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="Introduce tu DNI"
+        android:inputType="text|textCapCharacters"
+        android:maxLength="9"
+        android:maxLines="1"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvFechaNacimiento"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/tvFechaNacimiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="480dp"
+        android:text="Fecha de nacimiento"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/etFecha"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/etFecha"
+        android:layout_width="330dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="520dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="Selecciona una fecha"
+        android:inputType="date"
+        android:onClick="seleccionarFecha"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="#FFFFFF"
-        app:strokeWidth="5dp" />
+        tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btCancelar3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="596dp"
@@ -148,23 +168,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="#FFFFFF"
-        app:strokeWidth="5dp" />
+        app:strokeWidth="5dp"
+        tools:ignore="HardcodedText" />
 
-    <EditText
-        android:id="@+id/etFecha"
-        android:layout_width="330dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="520dp"
-        android:layout_marginEnd="150dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:hint="Selecciona una fecha"
-        android:inputType="date"
-        android:paddingLeft="10sp"
+    <Button
+        android:id="@+id/btAceptar3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="596dp"
+        android:backgroundTint="#4F4E4E"
+        android:enabled="true"
+        android:onClick="enviarDatos"
+        android:text="Aceptar"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.785"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#FFFFFF"
+        app:strokeWidth="5dp"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

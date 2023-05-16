@@ -1,11 +1,9 @@
 package com.example.casino;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.casino.databinding.ActivityInicioBinding;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Inicio_Activity extends AppCompatActivity {
 
