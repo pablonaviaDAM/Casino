@@ -1,4 +1,4 @@
-package com.example.casino;
+package com.example.casino.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,12 +9,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.casino.R;
+import com.example.casino.models.User;
+import com.example.casino.models.Validation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Objects;
 
 public class Registro_Activity2 extends AppCompatActivity {
 
@@ -32,8 +36,6 @@ public class Registro_Activity2 extends AppCompatActivity {
         etContrasenya = findViewById(R.id.etContrasenya);
         etContrasenya2 = findViewById(R.id.etContrasenya2);
         mAuth = FirebaseAuth.getInstance();
-
-        recibirDatos();
     }
 
     public void recibirDatos() {
@@ -62,8 +64,8 @@ public class Registro_Activity2 extends AppCompatActivity {
         }
 
         //Valida que el campo contraseña no este vacio y que se introduzcan un correo valido
-        if (pswd.isEmpty()) {
-            etContrasenya.setError("Este campo no puede estar vacio.");
+        if (pswd.isEmpty() || pswd.length() < 6) {
+            etContrasenya.setError("El campo tiene que tener min 6 carácteres");
             etContrasenya.requestFocus();
             valido = false;
         }
@@ -78,32 +80,29 @@ public class Registro_Activity2 extends AppCompatActivity {
     }
 
     public void crearCuenta(View view) {
+
         if (isValido()) {
             mAuth.createUserWithEmailAndPassword(email, pswd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-                            // Recogemos los datos del anterior activity y creamos un usuario con esos datos
-                            recibirDatos();
-                            User user = new User(nombre, apellidos, DNI, fecha, email, pswd);
 
-                            FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                Toast.makeText(Registro_Activity2.this, "Usuario registrado correctamente", Toast.LENGTH_LONG).show();
-                                            } else {
-                                                Toast.makeText(Registro_Activity2.this, "Error al registrar el usuario", Toast.LENGTH_LONG).show();
-                                            }
+                    if (task.isSuccessful()) {
+                        //Recogemos los datos del anterior activity y creamos un usuario con esos datos
+                        recibirDatos();
+                        User user = new User(nombre, apellidos, DNI, fecha, email, pswd);
+                        FirebaseDatabase.getInstance().getReference("Users")
+                                .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+                                .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(Registro_Activity2.this, "Usuario registrado correctamente", Toast.LENGTH_LONG).show();
+
+                                        } else {
+                                            Toast.makeText(Registro_Activity2.this, "Error al registrar el usuario", Toast.LENGTH_LONG).show();
                                         }
-                                    });
-                        } else {
-                            Toast.makeText(Registro_Activity2.this, "Usuario no autenticado", Toast.LENGTH_LONG).show();
-                        }
+                                    }
+                                });
                     } else {
                         Toast.makeText(Registro_Activity2.this, "Error al registrar el usuario", Toast.LENGTH_LONG).show();
                     }
@@ -111,5 +110,4 @@ public class Registro_Activity2 extends AppCompatActivity {
             });
         }
     }
-
 }

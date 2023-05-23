@@ -1,18 +1,27 @@
-package com.example.casino;
+package com.example.casino.activities;
 
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
+import com.example.casino.drawerMenu.DrawerBase_Activity;
+import com.example.casino.R;
 import com.example.casino.databinding.ActivityRuletaBinding;
 
 import java.util.Random;
@@ -20,9 +29,10 @@ import java.util.Random;
 public class Ruleta_Activity extends DrawerBase_Activity {
 
     ActivityRuletaBinding activityRuletaBinding;
-    private Button btSpin, botonSeleccionado;
+    private Button botonSeleccionado;
+    private ImageButton btSpin;
     private ImageView ruleta, fichaSelected;
-    private TextView tvNumResults, tvValorApuesta;
+    private TextView tvNumResults, tvFichasApostadas;
     private static final Random RAMDOM = new Random();
     private int angulo = 0, anguloAntiguo = 0;
     private int valorApuesta = 0;
@@ -34,25 +44,31 @@ public class Ruleta_Activity extends DrawerBase_Activity {
             "23 rojo", "10 negro", "5 rojo", "24 negro", "16 rojo", "33 negro",
             "1 rojo", "20 negro", "14 rojo", "31 negro", "9 rojo", "22 negro",
             "18 rojo", "29 negro", "7 rojo", "28 negro", "12 rojo", "35 negro",
-            "3 rojo", "26 negro", "zero verde"
+            "3 rojo", "26 negro", "cero verde"
     }; //Los valores se tienen que declarar en orden de acuerdo a la imagen de la ruleta
 
     private final int[] botonesIds = {R.id.bt0, R.id.bt1, R.id.bt2, R.id.bt3, R.id.bt4, R.id.bt5, R.id.bt6, R.id.bt7, R.id.bt8, R.id.bt9,
             R.id.bt10, R.id.bt11, R.id.bt12, R.id.bt13, R.id.bt14, R.id.bt15, R.id.bt16, R.id.bt17, R.id.bt18, R.id.bt19,
             R.id.bt20, R.id.bt21, R.id.bt22, R.id.bt23, R.id.bt24, R.id.bt25, R.id.bt26, R.id.bt27, R.id.bt28, R.id.bt29,
-            R.id.bt30, R.id.bt31, R.id.bt32, R.id.bt33, R.id.bt34, R.id.bt35, R.id.bt36};
+            R.id.bt30, R.id.bt31, R.id.bt32, R.id.bt33, R.id.bt34, R.id.bt35, R.id.bt36, R.id.btRojo, R.id.btNegro};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Oculta la barra de estado
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        //Para mostrar nuestro Toolbar personalizado
         activityRuletaBinding = ActivityRuletaBinding.inflate(getLayoutInflater());
         setContentView(activityRuletaBinding.getRoot());
-        allocateActivityTitle("Casino");
+        allocateActivityTitle("Lucked K");
 
         btSpin = findViewById(R.id.btSpin);
         ruleta = findViewById(R.id.ruletaSpin);
         tvNumResults = findViewById(R.id.tvNumResults);
-        tvValorApuesta = findViewById(R.id.tvValorApuesta);
+        tvFichasApostadas = findViewById(R.id.tvFichasApostadas);
     }
 
     public void spinRuleta(View view) {
@@ -78,8 +94,8 @@ public class Ruleta_Activity extends DrawerBase_Activity {
                 //CUANDO LA ANIMACION COMIENCE NO DEBEREMOS PERMITIR QUE SE REALICEN LAS APUESTAS
                 //Bucle que bloquea los botones para no poder apostar
                 for (int botonId : botonesIds) {
-                    Button boton = findViewById(botonId);
-                    boton.setClickable(false);
+                    Button botonRuleta = findViewById(botonId);
+                    botonRuleta.setClickable(false);
                 }
             }
 
@@ -91,8 +107,8 @@ public class Ruleta_Activity extends DrawerBase_Activity {
 
                 //Bucle que desbloquea los botones para poder apostar
                 for (int botonId : botonesIds) {
-                    Button boton = findViewById(botonId);
-                    boton.setClickable(true);
+                    Button botonRuleta = findViewById(botonId);
+                    botonRuleta.setClickable(true);
                 }
 
                 //Nos muestra los resultados en el textView
@@ -110,7 +126,7 @@ public class Ruleta_Activity extends DrawerBase_Activity {
 
             @Override
             public void onAnimationRepeat(Animation animation) {
-
+            //NO SE HACE NADA
             }
         });
 
@@ -162,38 +178,62 @@ public class Ruleta_Activity extends DrawerBase_Activity {
 
     //ESTE METODO NOS PERMITE MOSTRAR EN LOS BOTONES LA FICHA SELECCIONADA
     @SuppressLint("NonConstantResourceId")
-    public void mostrarFicha(View view) {
+    public void mostrarFicha(@NonNull View view) {
 
         //Para obtener el id del boton seleccionado
         int buttonId = view.getId();
         botonSeleccionado = findViewById(buttonId);
+        Drawable fichaSelected, fichaAjustada;
+        Bitmap bitmap;
 
         // Si no hay ficha seleccionada, no se realiza ninguna acción
-        if (fichaSelected == null) {
+        if (this.fichaSelected == null) {
             return;
         }
-        int fichaId = fichaSelected.getId();
+        int fichaId = this.fichaSelected.getId();
 
         switch (fichaId) {
             case R.id.imgFicha5:
-                botonSeleccionado.setForeground(ContextCompat.getDrawable(this, R.drawable.ficha5));
+                // Obtener la imagen de foreground
+                fichaSelected = ContextCompat.getDrawable(this, R.drawable.ficha5);
+
+                // PARA CAMBIAR EL TAMAÑO DE LA IMAGEN DEL FOREGROUND
+                bitmap = ((BitmapDrawable) fichaSelected).getBitmap();
+                fichaAjustada = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 350, 500, true));
+
+                botonSeleccionado.setForeground(fichaAjustada);
 
                 //*************************** SE PODRIA IMPLEMENTAR LA FUNCION DE COMPROBACION QUE CUANDO LLEGUE
                 // A LA CIFRA DE LA FICHA SIGUIENTE CAMBIE DE IMAGEN ***************************
 
                 break;
             case R.id.imgFicha10:
-                botonSeleccionado.setForeground(ContextCompat.getDrawable(this, R.drawable.ficha10));
+                fichaSelected = ContextCompat.getDrawable(this, R.drawable.ficha10);
+                bitmap = ((BitmapDrawable) fichaSelected).getBitmap();
+                fichaAjustada = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 350, 500, true));
+
+                botonSeleccionado.setForeground(fichaAjustada);
                 break;
             case R.id.imgFicha25:
-                botonSeleccionado.setForeground(ContextCompat.getDrawable(this, R.drawable.ficha25));
+                fichaSelected = ContextCompat.getDrawable(this, R.drawable.ficha25);
+                bitmap = ((BitmapDrawable) fichaSelected).getBitmap();
+                fichaAjustada = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 350, 500, true));
+
+                botonSeleccionado.setForeground(fichaAjustada);
                 break;
             case R.id.imgFicha50:
-                botonSeleccionado.setForeground(ContextCompat.getDrawable(this, R.drawable.ficha50));
+                fichaSelected = ContextCompat.getDrawable(this, R.drawable.ficha50);
+                bitmap = ((BitmapDrawable) fichaSelected).getBitmap();
+                fichaAjustada = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 350, 500, true));
+
+                botonSeleccionado.setForeground(fichaAjustada);
                 break;
             case R.id.imgFicha100:
-                botonSeleccionado.setForeground(ContextCompat.getDrawable(this, R.drawable.ficha100));
-                break;
+                fichaSelected = ContextCompat.getDrawable(this, R.drawable.ficha100);
+                bitmap = ((BitmapDrawable) fichaSelected).getBitmap();
+                fichaAjustada = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 350, 500, true));
+
+                botonSeleccionado.setForeground(fichaAjustada);                break;
             default:
                 // No se establece ningún foreground si la ficha seleccionada no coincide con ninguna de las opciones anteriores
                 botonSeleccionado.setForeground(null);
@@ -224,7 +264,7 @@ public class Ruleta_Activity extends DrawerBase_Activity {
                 valorApuesta += 100;
                 break;
         }
-        tvValorApuesta.setText(String.valueOf(valorApuesta));
+        tvFichasApostadas.setText(String.valueOf(valorApuesta));
     }
 
     //METODO QUE NOS BORRA LA APUESTA REALIZADA
@@ -242,6 +282,6 @@ public class Ruleta_Activity extends DrawerBase_Activity {
         }
         //Nos borra el valor de la apuesta
         valorApuesta = 0;
-        tvValorApuesta.setText(String.valueOf(valorApuesta));
+        tvFichasApostadas.setText(String.valueOf(valorApuesta));
     }
 }

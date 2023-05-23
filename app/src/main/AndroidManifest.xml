@@ -12,29 +12,51 @@
         android:theme="@style/Theme.Casino"
         tools:targetApi="31">
         <activity
-            android:name=".Sesion_Activity"
+            android:name=".Prueba"
             android:exported="true" />
         <activity
-            android:name=".Ruleta_Activity"
+            android:name=".activities.Ayuda_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activities.Sesion_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activities.Ruleta_Activity"
             android:exported="true" />
         <activity
-            android:name=".DrawerBase_Activity"
-            android:exported="false" />
+            android:name=".drawerMenu.DrawerBase_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".Registro_Activity2"
-            android:exported="true" />
+            android:name=".activities.Registro_Activity2"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".Registro_Activity"
-            android:exported="true" />
+            android:name=".activities.Registro_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".EdadActivity"
-            android:exported="true" />
+            android:name=".activities.Inicio_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".Inicio_Activity"
-            android:exported="true" />
+            android:name=".activities.Inicio_Activity2"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".Splah_Activity"
-            android:exported="true">
+            android:name=".activities.Splah_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,8 +64,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:exported="true" />
+            android:name=".activities.CuentaUser"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -1,4 +1,4 @@
-package com.example.casino;
+package com.example.casino.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -9,6 +9,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.casino.R;
+import com.example.casino.models.Validation;
 
 import java.util.Calendar;
 

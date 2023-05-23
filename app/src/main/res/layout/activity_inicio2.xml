@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_light"
-    tools:context=".activities.Inicio_Activity">
+    android:background="#B4B4B4"
+    tools:context=".activities.Inicio_Activity2">
 
     <ImageView
         android:id="@+id/imgLogo"
@@ -29,12 +29,12 @@
         android:layout_marginBottom="216dp"
         android:background="@drawable/boton_juego"
         android:contentDescription="boton_slots"
-        android:onClick="onButtonSlotsClicked"
         android:paddingStart="5sp"
         android:paddingTop="10sp"
         android:paddingEnd="3sp"
         android:paddingBottom="10sp"
         android:scaleType="fitCenter"
+        android:onClick="onButtonSlotsClicked2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.843"
@@ -49,7 +49,7 @@
         android:layout_marginBottom="216dp"
         android:background="@drawable/boton_juego"
         android:contentDescription="boton_ruleta"
-        android:onClick="onButtonRuletaClicked"
+        android:onClick="onButtonRuletaClicked2"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,12 +65,12 @@
         android:layout_marginBottom="60dp"
         android:background="@drawable/boton_juego"
         android:contentDescription="boton_blackjack"
-        android:onClick="onButtonBlackJackClicked"
         android:paddingStart="5sp"
         android:paddingTop="10sp"
         android:paddingEnd="3sp"
         android:paddingBottom="10sp"
         android:scaleType="fitCenter"
+        android:onClick="onButtonBlackJackClicked2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
@@ -122,7 +122,7 @@
     <TextView
         android:id="@+id/tvJuegos"
         android:layout_width="match_parent"
-        android:layout_height="46dp"
+        android:layout_height="51dp"
         android:background="@drawable/bg_gradient"
         android:fontFamily="sans-serif"
         android:paddingLeft="39sp"
@@ -133,10 +133,9 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.489"
+        app:layout_constraintVertical_bias="0.499"
         tools:ignore="HardcodedText,TextSizeCheck" />
 
 

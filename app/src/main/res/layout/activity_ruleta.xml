@@ -5,773 +5,1076 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4F4E4E"
-    tools:layout_editor_absoluteX="75dp"
-    tools:layout_editor_absoluteY="-4dp">
+    tools:context=".activities.Ruleta_Activity">
 
-    <RelativeLayout
-        android:id="@+id/relativelayoutNums"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:layout_height="match_parent">
 
-
-        <HorizontalScrollView
-            android:id="@+id/horizontalScrollViewNums"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:background="@color/black"
-            tools:ignore="UselessParent"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="49dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <!-- Resultados ruleta -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/tvNumResults"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:text="1 rojo 20 negro 30 rojo 0 verde 1 rojo 20 negro 30 rojo 0 verde 1 rojo 20 negro 30 rojo 0 verde"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText,VisualLintBounds" />
+
+                </HorizontalScrollView>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="0dp"
+                android:background="@color/white" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
+
+
+                <!-- Img saldo -->
+                <ImageView
+                    android:id="@+id/tvCartera"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="5dp"
+                    android:contentDescription="img cartera"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvSaldocuenta"
+                    app:layout_constraintEnd_toStartOf="@+id/tvSaldocuenta"
+                    app:layout_constraintTop_toTopOf="@+id/tvSaldocuenta"
+                    app:srcCompat="@drawable/cartera"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Valor saldo -->
+
+                <!-- Fichas apostadas -->
 
                 <TextView
-                    android:id="@+id/tvNumResults"
+                    android:id="@+id/tvSaldocuenta"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="#000000"
-                    android:ellipsize="end"
-                    android:gravity="end"
-                    android:maxLines="1"
-                    android:paddingTop="12dp"
-                    android:textAlignment="viewEnd"
+                    android:layout_height="wrap_content"
+                    android:text="1100,45 €"
                     android:textColor="@color/white"
-                    android:textStyle="bold" />
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.146"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.428"
+                    tools:ignore="HardcodedText" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="5dp"
+                    android:contentDescription="img cartera"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvFichasApostadas"
+                    app:layout_constraintEnd_toStartOf="@+id/tvFichasApostadas"
+                    app:layout_constraintTop_toTopOf="@+id/tvFichasApostadas"
+                    app:srcCompat="@drawable/fichas"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Valor saldo -->
+                <TextView
+                    android:id="@+id/tvFichasApostadas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="100 €"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.904"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.428"
+                    tools:ignore="HardcodedText" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/white" />
+
+            <!-- Num calientes/frios -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="5dp">
+
+                <!-- Numeros calientes -->
+                <TextView
+                    android:id="@+id/tvNumCalientes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Numeros calientes"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayout"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Img calientes -->
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="5dp"
+                    android:contentDescription="img fuego"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/linearLayout"
+                    app:layout_constraintTop_toTopOf="@+id/linearLayout"
+                    app:srcCompat="@drawable/fuego"
+                    tools:ignore="HardcodedText" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <TextView
+                        android:layout_width="35dp"
+                        android:layout_height="wrap_content"
+                        android:background="#FF0000"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="1"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText,TextContrastCheck" />
+
+                    <TextView
+                        android:layout_width="35dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_black_number"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="15"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText,TextContrastCheck" />
+
+                    <TextView
+                        android:layout_width="35dp"
+                        android:layout_height="wrap_content"
+                        android:background="#FF0000"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="27"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText,TextContrastCheck" />
+                </LinearLayout>
+
+                <!-- Numeros frios -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Numeros frios"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Img frios -->
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="5dp"
+                    android:contentDescription="img frio"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+                    app:layout_constraintTop_toTopOf="@+id/linearLayout2"
+                    app:srcCompat="@drawable/frio"
+                    tools:ignore="HardcodedText,ImageContrastCheck" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.87"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <TextView
+                        android:layout_width="35dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_green"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText,TextContrastCheck" />
+
+                    <TextView
+                        android:layout_width="35dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_black_number"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="15"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText,TextContrastCheck" />
+
+                    <TextView
+                        android:layout_width="35dp"
+                        android:layout_height="wrap_content"
+                        android:background="#FF0000"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="36"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText,TextContrastCheck" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Imagen ruleta -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+
+                <!-- Img Ruleta -->
+                <ImageView
+                    android:id="@+id/ruletaSpin"
+                    android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="ruleta"
+                    android:padding="5dp"
+                    android:scaleType="centerInside"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.985"
+                    app:srcCompat="@drawable/ruletaspinner"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Img Flecha -->
+                <ImageView
+                    android:id="@+id/imgFlecha"
+                    android:layout_width="10dp"
+                    android:layout_height="30dp"
+                    android:layout_alignEnd="@+id/ruletaSpin"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="-45dp"
+                    android:contentDescription="selector_numeros"
+                    app:layout_constraintBottom_toTopOf="@+id/ruletaSpin"
+                    app:layout_constraintEnd_toEndOf="@+id/ruletaSpin"
+                    app:layout_constraintStart_toStartOf="@+id/ruletaSpin"
+                    app:srcCompat="@drawable/flecharuleta"
+                    tools:ignore="HardcodedText,ImageContrastCheck" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Tablero numeros -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/bt0"
+                    android:layout_width="30dp"
+                    android:layout_height="153dp"
+                    android:backgroundTint="@color/color_green"
+                    android:gravity="center"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:onClick="mostrarFicha"
+                    android:padding="0dp"
+                    android:text="0"
+                    tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout3"
+                        style="?android:attr/buttonBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.26999998">
+
+                        <Button
+                            android:id="@+id/bt3"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="10dp"
+                            android:text="3"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt6"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="10dp"
+                            android:text="6"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt9"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="9"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt12"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="12"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt15"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="15"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt18"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="18"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt21"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="21"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt24"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="24"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt27"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="27"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt30"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="30"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt33"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="33"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt36"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="36"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
+                        app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+                        <Button
+                            android:id="@+id/bt2"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="10dp"
+                            android:text="2"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+
+                        <Button
+                            android:id="@+id/bt5"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="10dp"
+                            android:text="5"
+                            android:textColor="@color/white"
+                            app:layout_column="1"
+                            app:layout_row="0"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt8"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="10dp"
+                            android:text="8"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+
+                        <Button
+                            android:id="@+id/bt11"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="11"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+
+                        <Button
+                            android:id="@+id/bt14"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="14"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+
+                        <Button
+                            android:id="@+id/bt17"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="17"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+
+                        <Button
+                            android:id="@+id/bt20"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="20"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+
+                        <Button
+                            android:id="@+id/bt23"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="23"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+
+                        <Button
+                            android:id="@+id/bt26"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="26"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+
+                        <Button
+                            android:id="@+id/bt29"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="29"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+
+                        <Button
+                            android:id="@+id/bt32"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="32"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+
+                        <Button
+                            android:id="@+id/bt35"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="35"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
+                        app:layout_constraintStart_toStartOf="@+id/linearLayout4"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+                        <Button
+                            android:id="@+id/bt1"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="10dp"
+                            android:text="1"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt4"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="10dp"
+                            android:text="4"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt7"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="10dp"
+                            android:text="7"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt10"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="10"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt13"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="13"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt16"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="16"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt19"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="19"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt22"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="22"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt25"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="25"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt28"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="28"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt31"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_black_number"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="31"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/bt34"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="30dp"
+                            android:layout_height="51dp"
+                            android:backgroundTint="@color/color_red"
+                            android:gravity="center"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:onClick="mostrarFicha"
+                            android:padding="0dp"
+                            android:text="34"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
-        </HorizontalScrollView>
-    </RelativeLayout>
 
+            <!-- Fichas apuesta -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btRojo"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="mostrarFicha"
+                    android:backgroundTint="@color/color_red"
+                    android:contentDescription="color rojo"
+                    tools:ignore="HardcodedText" />
+
+                <Button
+                    android:id="@+id/btNegro"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="mostrarFicha"
+                    android:backgroundTint="@color/color_black_number"
+                    android:contentDescription="color negro"
+                    tools:ignore="HardcodedText" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgFicha5"
+                    android:layout_width="52dp"
+                    android:layout_height="57dp"
+                    android:contentDescription="ficha5"
+                    android:onClick="fichaSeleccionada"
+                    android:src="@drawable/ficha5"
+                    tools:ignore="HardcodedText" />
+
+                <ImageView
+                    android:id="@+id/imgFicha10"
+                    android:layout_width="52dp"
+                    android:layout_height="57dp"
+                    android:contentDescription="ficha10"
+                    android:onClick="fichaSeleccionada"
+                    android:src="@drawable/ficha10"
+                    tools:ignore="HardcodedText" />
+
+                <ImageView
+                    android:id="@+id/imgFicha25"
+                    android:layout_width="52dp"
+                    android:layout_height="57dp"
+                    android:contentDescription="ficha25"
+                    android:onClick="fichaSeleccionada"
+                    android:src="@drawable/ficha25"
+                    tools:ignore="HardcodedText" />
+
+                <ImageView
+                    android:id="@+id/imgFicha50"
+                    android:layout_width="52dp"
+                    android:layout_height="57dp"
+                    android:contentDescription="ficha50"
+                    android:onClick="fichaSeleccionada"
+                    android:src="@drawable/ficha50"
+                    tools:ignore="HardcodedText" />
+
+                <ImageView
+                    android:id="@+id/imgFicha100"
+                    android:layout_width="52dp"
+                    android:layout_height="57dp"
+                    android:contentDescription="ficha100"
+                    android:onClick="fichaSeleccionada"
+                    android:src="@drawable/ficha100"
+                    tools:ignore="HardcodedText" />
+
+                <Button
+                    android:id="@+id/btBorrar"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="#3C3C3C"
+                    android:fontFamily="@font/aleo"
+                    android:gravity="center"
+                    android:onClick="borrarApuesta"
+                    android:padding="2dp"
+                    android:text="X"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="10dp"
+                    tools:ignore="HardcodedText,TextSizeCheck,TouchTargetSizeCheck" />
+
+                <ImageButton
+                    android:id="@+id/btSpin"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/bt_giro"
+                    android:backgroundTint="#3C3C3C"
+                    android:contentDescription="boton giro"
+                    android:padding="8dp"
+                    android:onClick="spinRuleta"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/girar"
+                    tools:ignore="HardcodedText,TouchTargetSizeCheck" />
 
-    <ImageView
-        android:id="@+id/ruletaSpin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:adjustViewBounds="true"
-        android:contentDescription="ruleta"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.276"
-        app:srcCompat="@drawable/ruletaspinner"
-        tools:ignore="HardcodedText" />
 
-    <ImageView
-        android:id="@+id/imgFlecha"
-        android:layout_width="10dp"
-        android:layout_height="29dp"
-        android:contentDescription="selector_numeros"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ruletaSpin"
-        app:layout_constraintStart_toStartOf="@+id/ruletaSpin"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.21"
-        app:srcCompat="@drawable/flecharuleta"
-        tools:ignore="HardcodedText,ImageContrastCheck" />
+            </LinearLayout>
 
-    <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/gridLayout1"
-        android:layout_width="362dp"
-        android:layout_height="51dp"
-        app:columnCount="12"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.78"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.59000003"
-        app:rowCount="3">
 
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/bt3"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="10dp"
-            android:text="3"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt6"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="10dp"
-            android:text="6"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt9"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="9"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt12"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="12"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt15"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="15"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt18"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="18"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt21"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="21"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt24"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="24"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt27"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="27"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt30"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="30"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt33"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="33"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt36"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="36"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-    </androidx.gridlayout.widget.GridLayout>
-
-    <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/gridLayout2"
-        android:layout_width="362dp"
-        android:layout_height="51dp"
-        android:layout_marginBottom="132dp"
-        app:columnCount="14"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.78"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout1"
-        app:layout_constraintVertical_bias="0.0"
-        app:rowCount="3">
-
-
-        <Button
-            android:id="@+id/bt2"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="10dp"
-            android:text="2"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt5"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="10dp"
-            android:text="5"
-            app:layout_column="1"
-            app:layout_row="0"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-        <Button
-            android:id="@+id/bt8"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="10dp"
-            android:text="8"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt11"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="11"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt14"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="14"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt17"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="17"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt20"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="20"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt23"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="23"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt26"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="26"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt29"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="29"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt32"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="32"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt35"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="35"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-    </androidx.gridlayout.widget.GridLayout>
-
-    <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/gridLayout3"
-        android:layout_width="362dp"
-        android:layout_height="51dp"
-        android:layout_marginBottom="80dp"
-        app:columnCount="14"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.78"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout2"
-        app:layout_constraintVertical_bias="0.0"
-        app:rowCount="3">
-
-
-        <Button
-            android:id="@+id/bt1"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="10dp"
-            android:text="1"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt4"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="10dp"
-            android:text="4"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt7"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="10dp"
-            android:text="7"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt10"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="10"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt13"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="13"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt16"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="16"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt19"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="19"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt22"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="22"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt25"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="25"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt28"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="28"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt31"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_black_number"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="31"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <Button
-            android:id="@+id/bt34"
-            android:layout_width="30dp"
-            android:layout_height="51dp"
-            android:backgroundTint="@color/color_red"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="mostrarFicha"
-            android:padding="0dp"
-            android:text="34"
-            tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-    </androidx.gridlayout.widget.GridLayout>
-
-    <Button
-        android:id="@+id/bt0"
-        android:layout_width="30dp"
-        android:layout_height="153dp"
-        android:backgroundTint="@color/color_green"
-        android:gravity="center"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:onClick="mostrarFicha"
-        android:padding="0dp"
-        android:text="0"
-        app:layout_constraintBottom_toBottomOf="@+id/gridLayout2"
-        app:layout_constraintEnd_toStartOf="@+id/gridLayout2"
-        app:layout_constraintTop_toTopOf="@+id/gridLayout2"
-        tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-    <ImageView
-        android:id="@+id/imgFicha100"
-        android:layout_width="52dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="-5dp"
-        android:layout_marginBottom="96dp"
-        android:contentDescription="ficha100"
-        android:onClick="fichaSeleccionada"
-        android:src="@drawable/ficha100"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imgFicha50"
-        tools:ignore="HardcodedText" />
-
-    <ImageView
-        android:id="@+id/imgFicha50"
-        android:layout_width="52dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="-5dp"
-        android:layout_marginBottom="96dp"
-        android:contentDescription="ficha50"
-        android:onClick="fichaSeleccionada"
-        android:src="@drawable/ficha50"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgFicha25"
-        tools:ignore="HardcodedText" />
-
-    <ImageView
-        android:id="@+id/imgFicha25"
-        android:layout_width="52dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="-5dp"
-        android:layout_marginBottom="96dp"
-        android:contentDescription="ficha25"
-        android:onClick="fichaSeleccionada"
-        android:src="@drawable/ficha25"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imgFicha10"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="HardcodedText" />
-
-
-    <ImageView
-        android:id="@+id/imgFicha5"
-        android:layout_width="52dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginBottom="96dp"
-        android:contentDescription="ficha5"
-        android:onClick="fichaSeleccionada"
-        android:src="@drawable/ficha5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imgFicha10"
-        app:layout_constraintHorizontal_bias="1.17"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="HardcodedText" />
-
-    <ImageView
-        android:id="@+id/imgFicha10"
-        android:layout_width="52dp"
-        android:layout_height="57dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="96dp"
-        android:contentDescription="ficha10"
-        android:onClick="fichaSeleccionada"
-        android:src="@drawable/ficha10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imgFicha25"
-        tools:ignore="HardcodedText" />
-
-    <Button
-        android:id="@+id/btSpin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="165dp"
-        android:layout_marginEnd="152dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="spinRuleta"
-        android:text="Spin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="HardcodedText" />
-
-    <Button
-        android:id="@+id/btBorrar"
-        android:layout_width="42dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="104dp"
-        android:backgroundTint="#FF0000"
-        android:fontFamily="@font/aleo"
-        android:onClick="borrarApuesta"
-        android:padding="0dp"
-        android:text="X"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:cornerRadius="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="HardcodedText,TextSizeCheck,TouchTargetSizeCheck" />
-
-    <TextView
-        android:id="@+id/tvValorApuesta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:hint="Valor apuesta"
-        android:textColorHint="#4DD0E1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="HardcodedText" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

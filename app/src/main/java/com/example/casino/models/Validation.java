@@ -1,4 +1,4 @@
-package com.example.casino;
+package com.example.casino.models;
 
 import androidx.annotation.NonNull;
 

@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "298002800275",
-    "project_id": "casinoapp-2718c",
-    "storage_bucket": "casinoapp-2718c.appspot.com"
+    "project_number": "615208357919",
+    "firebase_url": "https://casino-app-91b6b-default-rtdb.firebaseio.com",
+    "project_id": "casino-app-91b6b",
+    "storage_bucket": "casino-app-91b6b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:298002800275:android:c76c59a694825f1023b766",
+        "mobilesdk_app_id": "1:615208357919:android:3827d3110d2b7f633cc52a",
         "android_client_info": {
           "package_name": "com.example.casino"
         }
       },
       "oauth_client": [
         {
-          "client_id": "298002800275-rkra631vnvnpsj7a2jmn9b49egc9ah0k.apps.googleusercontent.com",
+          "client_id": "615208357919-ggveeepn6tvv2a6f09qq7h0lmjmqtbvj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBw0CE8P9BiXSkyR5VF9fioOjEF49s6-rU"
+          "current_key": "AIzaSyA308B4zAre3Hl6bmPxd1x5CQulAuZwMKE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "298002800275-rkra631vnvnpsj7a2jmn9b49egc9ah0k.apps.googleusercontent.com",
+              "client_id": "615208357919-ggveeepn6tvv2a6f09qq7h0lmjmqtbvj.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

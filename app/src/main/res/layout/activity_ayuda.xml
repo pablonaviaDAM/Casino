@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".activities.Ayuda_Activity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Titulo Header -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:text="Ayuda"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <!-- Reglas oficiales -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Reglas oficiales"
+                android:textColor="@color/color_green"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="En la Ruleta Europea, los jugadores apuestan a un número único o a una serie de números, a rojo o negro, o a par o impar. Para determinar el número y el color ganadores, un crupier hace girar la ruleta y lanza la bola para que ruede en el sentido opuesto. La bola finalmente cae en una de las 37 casillas numeradas y de color de la ruleta (números de 0 a 36)."
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                tools:ignore="HardcodedText" />
+
+            <!-- Reglas Lucked K -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Reglas Lucked K"
+                android:textColor="@color/color_green"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="En el juego de la ruleta, las apuestas se realizan en un tablero que abarca los números del 0 al 36. Puedes realizar apuestas en un mismo número repetidas veces, y el valor de la apuesta se multiplicará en función de cuántas veces hayas pulsado en ese número. Además, el valor de la apuesta también se verá afectado por la ficha seleccionada.    \n\nEs importante tener en cuenta que las apuestas estarán limitadas al valor de tu saldo disponible en el juego. Asegúrate de gestionar tus apuestas de acuerdo con el saldo disponible para evitar excederte.      \n\nUna vez que hayas iniciado el giro de la ruleta, no se te permitirá realizar más apuestas hasta que la animación del giro haya terminado y se muestre un número ganador. Esto garantiza un juego justo y evita cambios de apuestas después de conocer el resultado.   \n\n¡Buena suerte en tus apuestas!"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                tools:ignore="HardcodedText" />
+
+            <!-- Como jugar -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Cómo jugar"
+                android:textColor="@color/color_green"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Para comenzar a jugar, primero debes seleccionar una ficha. Tienes a tu disposición cinco fichas con valores diferentes: 5, 10, 25, 50 y 100.    \n\nEl valor seleccionado determinará la cantidad de ganancias que podrías obtener al apostar con esa ficha. Cuanto mayor sea el valor de la ficha seleccionada, mayores serán las posibles ganancias."
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                tools:ignore="HardcodedText" />
+
+            <!-- Fichas -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:contentDescription="ficha 5"
+                    android:src="@drawable/ficha5"
+                    tools:ignore="HardcodedText" />
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:contentDescription="ficha 10"
+                    android:src="@drawable/ficha10"
+                    tools:ignore="HardcodedText" />
+
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:contentDescription="ficha 25"
+
+                    android:src="@drawable/ficha25"
+                    tools:ignore="HardcodedText" />
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:contentDescription="ficha 50"
+                    android:src="@drawable/ficha50"
+                    tools:ignore="HardcodedText" />
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:contentDescription="ficha 100"
+                    android:src="@drawable/ficha100"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <!-- Probabilidad -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Probabilidad"
+                android:textColor="@color/color_green"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Los números que aparecen en la ruleta son generados de forma aleatoria, pero puedes considerar las estadísticas de los números 'calientes' y 'fríos' como una guía adicional.       \n\nLos números 'calientes' son aquellos que se han repetido con mayor frecuencia durante el transcurso del juego, mientras que los números 'fríos' son los que han salido menos veces.    \n\nEstas estadísticas pueden servir como una estrategia adicional para que los jugadores decidan apostar en base a los números que han salido más o menos veces.      \nSin embargo, es importante recordar que la ruleta es un juego de azar y que cada giro es independiente, por lo que no hay garantía de que los números 'calientes' o 'fríos' tengan una influencia directa en los resultados futuros."
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                tools:ignore="HardcodedText" />
+
+            <!-- Numeros calientes/frios -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Numeros calientes -->
+
+                <!-- Numeros frios -->
+                <ImageView
+                    android:id="@+id/imgNumCalientes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="Numeros calientes image"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/ncalientes"
+                    tools:ignore="HardcodedText" />
+
+                <ImageView
+                    android:id="@+id/imgNumFrios"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Numeros frios image"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/nfrios"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+            <!-- Objetivos -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Objetivos"
+                android:textColor="@color/color_green"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="El objetivo es que el jugador pronostique en qué número de la ruleta va a caer la bola."
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                tools:ignore="HardcodedText" />
+
+            <!-- Pagos -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Pagos"
+                android:textColor="@color/color_green"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Los pagos se calculan en función de las fichas apostadas. Cada ficha apostada tiene un pago de 5:1, lo que significa que se multiplicará por 5 el valor de cada ficha apostada."
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                tools:ignore="HardcodedText" />
+
+            <!-- Trofeos -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Trofeos"
+                android:textColor="@color/color_green"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Los trofeos se desbloquearán una vez hayas cumplido con los objetivos de cada trofeo. Estos trofeos te darán un bonus que se añadirá en tu saldo en bonos."
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

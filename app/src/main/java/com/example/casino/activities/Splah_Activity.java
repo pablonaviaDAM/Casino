@@ -1,4 +1,4 @@
-package com.example.casino;
+package com.example.casino.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import com.example.casino.R;
 
 public class Splah_Activity extends AppCompatActivity {
 
