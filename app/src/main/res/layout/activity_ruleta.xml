@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/numCalien"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4F4E4E"
@@ -69,9 +70,9 @@
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
                     android:contentDescription="img cartera"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvSaldocuenta"
-                    app:layout_constraintEnd_toStartOf="@+id/tvSaldocuenta"
-                    app:layout_constraintTop_toTopOf="@+id/tvSaldocuenta"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvSaldoCuenta"
+                    app:layout_constraintEnd_toStartOf="@+id/tvSaldoCuenta"
+                    app:layout_constraintTop_toTopOf="@+id/tvSaldoCuenta"
                     app:srcCompat="@drawable/cartera"
                     tools:ignore="HardcodedText" />
 
@@ -80,10 +81,10 @@
                 <!-- Fichas apostadas -->
 
                 <TextView
-                    android:id="@+id/tvSaldocuenta"
+                    android:id="@+id/tvSaldoCuenta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1100,45 €"
+                    android:text="1100"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -92,6 +93,32 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.428"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tvSaldoEuro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="€"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvSaldoCuenta"
+                    app:layout_constraintStart_toEndOf="@+id/tvSaldoCuenta"
+                    app:layout_constraintTop_toTopOf="@+id/tvSaldoCuenta"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tvSaldoEuro2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="€"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvFichasApostadas"
+                    app:layout_constraintStart_toEndOf="@+id/tvFichasApostadas"
+                    app:layout_constraintTop_toTopOf="@+id/tvFichasApostadas"
                     tools:ignore="HardcodedText" />
 
                 <ImageView
@@ -110,7 +137,7 @@
                     android:id="@+id/tvFichasApostadas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="100 €"
+                    android:text="100"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -179,9 +206,11 @@
                     app:layout_constraintStart_toStartOf="parent">
 
                     <TextView
+                        android:id="@+id/numCaliente1"
                         android:layout_width="35dp"
                         android:layout_height="wrap_content"
                         android:background="#FF0000"
+                        android:contentDescription="numero caliente 1"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:text="1"
@@ -192,9 +221,11 @@
                         tools:ignore="HardcodedText,TextContrastCheck" />
 
                     <TextView
+                        android:id="@+id/numCaliente2"
                         android:layout_width="35dp"
                         android:layout_height="wrap_content"
                         android:background="@color/color_black_number"
+                        android:contentDescription="numero caliente 2"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:text="15"
@@ -205,9 +236,11 @@
                         tools:ignore="HardcodedText,TextContrastCheck" />
 
                     <TextView
+                        android:id="@+id/numCaliente3"
                         android:layout_width="35dp"
                         android:layout_height="wrap_content"
                         android:background="#FF0000"
+                        android:contentDescription="numero caliente 3"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:text="27"
@@ -254,9 +287,11 @@
                     app:layout_constraintStart_toStartOf="parent">
 
                     <TextView
+                        android:id="@+id/numFrio1"
                         android:layout_width="35dp"
                         android:layout_height="wrap_content"
                         android:background="@color/color_green"
+                        android:contentDescription="numero frio 1"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:text="0"
@@ -267,9 +302,11 @@
                         tools:ignore="HardcodedText,TextContrastCheck" />
 
                     <TextView
+                        android:id="@+id/numFrio2"
                         android:layout_width="35dp"
                         android:layout_height="wrap_content"
                         android:background="@color/color_black_number"
+                        android:contentDescription="numero frio 2"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:text="15"
@@ -280,9 +317,11 @@
                         tools:ignore="HardcodedText,TextContrastCheck" />
 
                     <TextView
-                        android:layout_width="35dp"
+                        android:id="@+id/numFrio3"
+                        android:layout_width="29dp"
                         android:layout_height="wrap_content"
                         android:background="#FF0000"
+                        android:contentDescription="numero frio 3"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:text="36"
@@ -339,6 +378,7 @@
 
             <!-- Tablero numeros -->
             <LinearLayout
+                android:id="@+id/tableroApuestas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -968,9 +1008,9 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="mostrarFicha"
                     android:backgroundTint="@color/color_red"
                     android:contentDescription="color rojo"
+                    android:onClick="mostrarFicha"
                     tools:ignore="HardcodedText" />
 
                 <Button
@@ -979,9 +1019,9 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="mostrarFicha"
                     android:backgroundTint="@color/color_black_number"
                     android:contentDescription="color negro"
+                    android:onClick="mostrarFicha"
                     tools:ignore="HardcodedText" />
 
 
@@ -1063,8 +1103,8 @@
                     android:background="@drawable/bt_giro"
                     android:backgroundTint="#3C3C3C"
                     android:contentDescription="boton giro"
-                    android:padding="8dp"
                     android:onClick="spinRuleta"
+                    android:padding="8dp"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/girar"
                     tools:ignore="HardcodedText,TouchTargetSizeCheck" />

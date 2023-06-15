@@ -50,5 +50,8 @@ dependencies {
     //Animacion splah
     implementation 'com.airbnb.android:lottie:6.0.0'
 
+    //Peticiones http
+    implementation 'com.android.volley:volley:1.2.1'
+
 
 }

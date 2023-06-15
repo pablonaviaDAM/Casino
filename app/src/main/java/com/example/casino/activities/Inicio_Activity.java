@@ -59,7 +59,7 @@ public class Inicio_Activity extends AppCompatActivity {
         btSi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Inicio_Activity.this, Sesion_Activity.class);
+                Intent intent = new Intent(Inicio_Activity.this, Login_Activity.class);
                 startActivity(intent);
                 edadDialog.dismiss();
                 finish();

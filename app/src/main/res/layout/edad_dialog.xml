@@ -22,7 +22,6 @@
 
             <Button
                 android:id="@+id/btSi"
-                style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="330dp"
@@ -43,7 +42,6 @@
 
             <Button
                 android:id="@+id/btNo"
-                style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="330dp"
@@ -66,27 +64,26 @@
                 android:id="@+id/imgEdad"
                 android:layout_width="174dp"
                 android:layout_height="107dp"
-                android:layout_marginTop="190dp"
+                android:layout_marginTop="196dp"
                 android:contentDescription="imgEdad"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/edad"
                 tools:ignore="HardcodedText" />
 
             <TextView
-                android:id="@+id/tvWarning"
-                android:layout_width="299dp"
-                android:layout_height="112dp"
+                android:id="@+id/tvVictoriaTitle"
+                android:layout_width="295dp"
+                android:layout_height="140dp"
                 android:layout_marginTop="60dp"
                 android:fontFamily="sans-serif-condensed"
-                android:text="Para poder continuar debe de tener +18 años. Debe registrarse primero para poder verificarlo."
+                android:text="Para poder continuar debe de tener +18 años. Por favor, regístrese primero para poder verificar su edad o inicie sesión."
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.686"
+                app:layout_constraintHorizontal_bias="0.705"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText,TextSizeCheck" />

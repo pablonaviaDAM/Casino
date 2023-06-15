@@ -1,8 +1,11 @@
 package com.example.casino.activities;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,10 +23,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
-import com.example.casino.drawerMenu.DrawerBase_Activity;
 import com.example.casino.R;
 import com.example.casino.databinding.ActivityRuletaBinding;
+import com.example.casino.drawerMenu.DrawerBase_Activity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 
 public class Ruleta_Activity extends DrawerBase_Activity {
@@ -32,19 +40,31 @@ public class Ruleta_Activity extends DrawerBase_Activity {
     private Button botonSeleccionado;
     private ImageButton btSpin;
     private ImageView ruleta, fichaSelected;
-    private TextView tvNumResults, tvFichasApostadas;
+    private TextView tvSaldoCuenta, tvFichasApostadas, tvNumResults;
+    private Dialog dialogVictory;
+
+    ////////// PROBANDO //////////
+    private List<Integer> numerosApostados = new ArrayList<>();
+    private Map<Integer, Double> numeroValorApuesta = new HashMap<>();
+
+    private HashMap<Button, Double> valoresApuestaPorBoton = new HashMap<>();
+    private List<Button> botonesSeleccionados = new ArrayList<>();
+
+    ////////// ---------PROBANDO--------- //////////
+
     private static final Random RAMDOM = new Random();
+    private String numGanadorS;
     private int angulo = 0, anguloAntiguo = 0;
-    private int valorApuesta = 0;
+    private int valorFichasTotales = 0, valorFichaBoton = 0; //VALORFICHABOTON PROBANDO
 
     private static final float MEDIO_SECTOR = 360f / 37f / 2f; //Calcula cada casilla
-    private static final String[] sectors = {"32 rojo", "15 negro",
+    private static final String[] SECTORS = {"32 rojo", "15 negro",
             "19 rojo", "4 negro", "21 rojo", "2 negro", "25 rojo", "17 negro", "34 rojo",
             "6 negro", "27 rojo", "13 negro", "36 rojo", "11 negro", "30 rojo", "8 negro",
             "23 rojo", "10 negro", "5 rojo", "24 negro", "16 rojo", "33 negro",
             "1 rojo", "20 negro", "14 rojo", "31 negro", "9 rojo", "22 negro",
             "18 rojo", "29 negro", "7 rojo", "28 negro", "12 rojo", "35 negro",
-            "3 rojo", "26 negro", "cero verde"
+            "3 rojo", "26 negro", "0 verde"
     }; //Los valores se tienen que declarar en orden de acuerdo a la imagen de la ruleta
 
     private final int[] botonesIds = {R.id.bt0, R.id.bt1, R.id.bt2, R.id.bt3, R.id.bt4, R.id.bt5, R.id.bt6, R.id.bt7, R.id.bt8, R.id.bt9,
@@ -57,7 +77,7 @@ public class Ruleta_Activity extends DrawerBase_Activity {
         super.onCreate(savedInstanceState);
 
         // Oculta la barra de estado
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //Para mostrar nuestro Toolbar personalizado
@@ -99,7 +119,6 @@ public class Ruleta_Activity extends DrawerBase_Activity {
                 }
             }
 
-            @SuppressLint("SetTextI18n")
             @Override
             public void onAnimationEnd(Animation animation) {
                 //CUANDO LA ANIMACION TERMINE SETEAREMOS EN UN TEXTVIEW EL VALOR RESULTANTE DE LA RULETA
@@ -112,21 +131,31 @@ public class Ruleta_Activity extends DrawerBase_Activity {
                 }
 
                 //Nos muestra los resultados en el textView
-                String numResult = getSector(360 - (angulo % 360));
+                numGanadorS = getSector(360 - (angulo % 360)); //Ultimo numero que ha salido ganador
                 String numResults = tvNumResults.getText().toString();
+
+                String[] partes = numGanadorS.split(" "); //Nos separa el numero del color
+                int numeroGanador = Integer.parseInt(partes[0].trim());
+                String color = partes[1].trim();
+
+
+                //En el caso que el textview no este vacio se anyade un espacio
                 if (!numResults.isEmpty()) {
-                    numResult = " " + numResult;
+                    numGanadorS = " " + numGanadorS;
+
                 }
 
-                numResults = numResult + numResults;
+                numResults = numGanadorS + numResults;
 
                 // Establecer el texto actualizado en el TextView
                 tvNumResults.setText(" " + numResults);
+
+                comprobarVictoria(numeroGanador);
             }
 
             @Override
             public void onAnimationRepeat(Animation animation) {
-            //NO SE HACE NADA
+                //NO SE HACE NADA
             }
         });
 
@@ -134,6 +163,8 @@ public class Ruleta_Activity extends DrawerBase_Activity {
 
     }
 
+
+    //ESTE METODO NOS MOSTRARA EL NUMERO GANADOR DE LA RULETA
     private String getSector(int angulo) {
         int i = 0;
         String text = null;
@@ -146,14 +177,99 @@ public class Ruleta_Activity extends DrawerBase_Activity {
             if (angulo >= start && angulo < end) {
                 //angulo esta dentro
                 //asi que el texto es igual a los sectores
-                text = sectors[i];
+                text = SECTORS[i];
             }
             i++;
-        } while (text == null && i < sectors.length);
+        } while (text == null && i < SECTORS.length);
 
         return text;
     }
 
+
+    private void comprobarVictoria(int numeroGanador) {
+        //En el caso que los numeros apostados coincida con el numero ganador nos muestra el dialog de victoria
+        if (numerosApostados.contains(numeroGanador)) {
+            mostrarDialogo();
+        }
+    }
+
+    private void mostrarDialogo() {
+        dialogVictory.setContentView(R.layout.victoria_dialog);
+        dialogVictory.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        ImageView imgClose = dialogVictory.findViewById(R.id.imgClose);
+        TextView saldoGanado = dialogVictory.findViewById(R.id.tvSaldoGanado);
+
+        saldoGanado.setText(tvFichasApostadas.getText());
+
+
+        imgClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogVictory.dismiss();
+            }
+        });
+        dialogVictory.show(); //Nos muestra el dialogo de victoria
+    }
+
+/*
+    private void empezarPartida() {
+
+        //Recoge el saldo de la cuenta y fichas apostadas
+        tvSaldoCuenta = findViewById(R.id.tvSaldoCuenta);
+        double saldo = Double.parseDouble(tvSaldoCuenta.getText().toString());
+        double valorApostado = Double.parseDouble(tvFichasApostadas.getText().toString());
+
+        //En el caso que se realice alguna apuesta se restará el valor del saldo
+        if (valorApostado > 0) {
+            saldo -= valorApostado;
+        }
+    }
+
+    public void comprobarApuestaBotones() {
+        for (int botonId : botonesIds) {
+            Button botonApostado = findViewById(botonId);
+
+            //En el caso que este apostado su foreground sera diferente de null
+            if (botonApostado.getForeground() != null) {
+                int numBoton = obtenerNumeroBoton(botonId);
+                double valorApuestaBoton = ;
+            }
+
+        }
+    }
+
+    public int obtenerNumeroBoton(int botonId) {
+        Button boton = findViewById(botonId);
+        String numeroBoton = boton.getText().toString();
+
+        return Integer.parseInt(numeroBoton);
+    }
+
+    // Este método recoge el valor de apuesta desde un botón
+    private double obtenerValorApuestaDesdeBoton(Button boton) {
+        double valorApuesta = 0;
+
+        if (valoresApuestaPorBoton.containsKey(boton)) {
+            valorApuesta = valoresApuestaPorBoton.get(boton);
+        }
+
+        return valorApuesta;
+    }
+
+    public HashMap<Button, Double> obtenerValoresApuestaPorBoton() {
+        HashMap<Button, Double> valoresApuestaPorBoton = new HashMap<>();
+
+        for (Button boton : botonesSeleccionados) {
+            double valorApuesta = obtenerValorApuestaDesdeBoton(boton);
+            valoresApuestaPorBoton.put(boton, valorApuesta);
+        }
+
+        return valoresApuestaPorBoton;
+    }
+*/
+
+    //ESTE METODO AUMENTARA EL TAMAÑO DE LA FICHA SELECCIONADA
     public void fichaSeleccionada(View view) {
         ImageView imgClickada = (ImageView) view;
 
@@ -172,7 +288,6 @@ public class Ruleta_Activity extends DrawerBase_Activity {
             fichaSelected = imgClickada;
             fichaSelected.setScaleX(1.2f);
             fichaSelected.setScaleY(1.2f);
-
         }
     }
 
@@ -198,14 +313,11 @@ public class Ruleta_Activity extends DrawerBase_Activity {
                 fichaSelected = ContextCompat.getDrawable(this, R.drawable.ficha5);
 
                 // PARA CAMBIAR EL TAMAÑO DE LA IMAGEN DEL FOREGROUND
-                bitmap = ((BitmapDrawable) fichaSelected).getBitmap();
+                bitmap = ((BitmapDrawable) Objects.requireNonNull(fichaSelected)).getBitmap();
                 fichaAjustada = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 350, 500, true));
 
                 botonSeleccionado.setForeground(fichaAjustada);
-
-                //*************************** SE PODRIA IMPLEMENTAR LA FUNCION DE COMPROBACION QUE CUANDO LLEGUE
-                // A LA CIFRA DE LA FICHA SIGUIENTE CAMBIE DE IMAGEN ***************************
-
+                numerosApostados.add(fichaId);
                 break;
             case R.id.imgFicha10:
                 fichaSelected = ContextCompat.getDrawable(this, R.drawable.ficha10);
@@ -213,6 +325,9 @@ public class Ruleta_Activity extends DrawerBase_Activity {
                 fichaAjustada = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 350, 500, true));
 
                 botonSeleccionado.setForeground(fichaAjustada);
+
+                numerosApostados.add(fichaId);
+
                 break;
             case R.id.imgFicha25:
                 fichaSelected = ContextCompat.getDrawable(this, R.drawable.ficha25);
@@ -220,6 +335,9 @@ public class Ruleta_Activity extends DrawerBase_Activity {
                 fichaAjustada = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 350, 500, true));
 
                 botonSeleccionado.setForeground(fichaAjustada);
+
+                numerosApostados.add(fichaId);
+
                 break;
             case R.id.imgFicha50:
                 fichaSelected = ContextCompat.getDrawable(this, R.drawable.ficha50);
@@ -227,44 +345,53 @@ public class Ruleta_Activity extends DrawerBase_Activity {
                 fichaAjustada = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 350, 500, true));
 
                 botonSeleccionado.setForeground(fichaAjustada);
+
+                numerosApostados.add(fichaId);
+
                 break;
             case R.id.imgFicha100:
                 fichaSelected = ContextCompat.getDrawable(this, R.drawable.ficha100);
                 bitmap = ((BitmapDrawable) fichaSelected).getBitmap();
                 fichaAjustada = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 350, 500, true));
 
-                botonSeleccionado.setForeground(fichaAjustada);                break;
+                botonSeleccionado.setForeground(fichaAjustada);
+
+                numerosApostados.add(fichaId);
+
+                break;
             default:
                 // No se establece ningún foreground si la ficha seleccionada no coincide con ninguna de las opciones anteriores
                 botonSeleccionado.setForeground(null);
                 break;
         }
-        recogerValoresApuesta();
+        recogerValoresFichas();
     }
 
-    // Dependiendo de la ficha seleccionada, el valor de la apuesta aumentará
-    @SuppressLint("NonConstantResourceId")
-    public void recogerValoresApuesta() {
+    // Dependiendo de la ficha seleccionada, el valor total de la apuesta aumentara
+    public void recogerValoresFichas() {
         int fichaId = fichaSelected.getId();
 
         switch (fichaId) {
             case R.id.imgFicha5:
-                valorApuesta += 5;
+                valorFichasTotales += 5;
                 break;
             case R.id.imgFicha10:
-                valorApuesta += 10;
+                valorFichasTotales += 10;
                 break;
             case R.id.imgFicha25:
-                valorApuesta += 25;
+                valorFichasTotales += 25;
                 break;
             case R.id.imgFicha50:
-                valorApuesta += 50;
+                valorFichasTotales += 50;
                 break;
             case R.id.imgFicha100:
-                valorApuesta += 100;
+                valorFichasTotales += 100;
+                break;
+            default:
+                valorFichasTotales = 0;
                 break;
         }
-        tvFichasApostadas.setText(String.valueOf(valorApuesta));
+        tvFichasApostadas.setText(String.valueOf(valorFichasTotales)); //Nos muestra el valor total de las fichas
     }
 
     //METODO QUE NOS BORRA LA APUESTA REALIZADA
@@ -279,9 +406,11 @@ public class Ruleta_Activity extends DrawerBase_Activity {
         for (int botonId : botonesIds) {
             Button boton = findViewById(botonId);
             boton.setForeground(null);
+
         }
-        //Nos borra el valor de la apuesta
-        valorApuesta = 0;
-        tvFichasApostadas.setText(String.valueOf(valorApuesta));
+        //Nos borra el valor de la apuesta, de las fichas y los numeros apostados
+        valorFichasTotales = 0;
+        tvFichasApostadas.setText(String.valueOf(valorFichasTotales));
+        numerosApostados.clear();
     }
 }

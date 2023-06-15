@@ -1,30 +1,41 @@
 package com.example.casino.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.casino.R;
-import com.example.casino.models.User;
-import com.example.casino.models.Validation;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Objects;
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.casino.R;
+import com.example.casino.models.ApiEndpoints;
+import com.example.casino.models.Validation;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Registro_Activity2 extends AppCompatActivity {
 
     private EditText etEmail, etContrasenya, etContrasenya2;
-    private FirebaseAuth mAuth;
     private String email, pswd, pswd2, nombre, apellidos, DNI, fecha;
+
+    private Button btCancelar, btAceptar;
+    private ApiEndpoints endpoints;
 
 
     @Override
@@ -35,7 +46,10 @@ public class Registro_Activity2 extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmail);
         etContrasenya = findViewById(R.id.etContrasenya);
         etContrasenya2 = findViewById(R.id.etContrasenya2);
-        mAuth = FirebaseAuth.getInstance();
+        btCancelar = findViewById(R.id.btCancelar);
+        btAceptar = findViewById(R.id.btAceptar);
+
+        recibirDatos();
     }
 
     public void recibirDatos() {
@@ -82,32 +96,75 @@ public class Registro_Activity2 extends AppCompatActivity {
     public void crearCuenta(View view) {
 
         if (isValido()) {
-            mAuth.createUserWithEmailAndPassword(email, pswd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+            //Instanciar la Request Queue
+            RequestQueue queue = Volley.newRequestQueue(Registro_Activity2.this);
+
+            //La url a la que se hará un POST para loguear en tu cuenta
+            endpoints = new ApiEndpoints();
+            String url = endpoints.endpointAPI("/registro");
+
+            //String Request Object
+            StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                 @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
+                public void onResponse(String response) {
 
-                    if (task.isSuccessful()) {
-                        //Recogemos los datos del anterior activity y creamos un usuario con esos datos
-                        recibirDatos();
-                        User user = new User(nombre, apellidos, DNI, fecha, email, pswd);
-                        FirebaseDatabase.getInstance().getReference("Users")
-                                .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
-                                .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
-                                            Toast.makeText(Registro_Activity2.this, "Usuario registrado correctamente", Toast.LENGTH_LONG).show();
+                    if (response.equalsIgnoreCase("success")) {
+                        etEmail.setText(null);
+                        etContrasenya.setText(null);
+                        etContrasenya2.setText(null);
+                        Toast.makeText(Registro_Activity2.this, "Registro correcto", Toast.LENGTH_LONG).show();
 
-                                        } else {
-                                            Toast.makeText(Registro_Activity2.this, "Error al registrar el usuario", Toast.LENGTH_LONG).show();
-                                        }
-                                    }
-                                });
-                    } else {
-                        Toast.makeText(Registro_Activity2.this, "Error al registrar el usuario", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(Registro_Activity2.this, Inicio_Activity2.class);
+                        startActivity(intent);
+                        finish();
                     }
                 }
-            });
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(Registro_Activity2.this, "Registro fallido", Toast.LENGTH_LONG).show();
+                    error.printStackTrace();
+                    System.out.println(error.getMessage());
+                }
+            }) {
+
+                @Nullable
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    Date fechaDate = null;
+                    try {
+                        fechaDate = dateFormat.parse(fecha);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    String fechaFormateada = dateFormat.format(fechaDate);
+
+                    //La Key debe coincidir con el nombre exacto de los parametros del servidor
+                    Map<String, String> params = new HashMap<>();
+                    params.put("nombre", nombre);
+                    params.put("apellidos", apellidos);
+                    params.put("dni", DNI);
+                    params.put("fecha_nacimiento", fechaFormateada);
+                    params.put("email", email);
+                    params.put("password", pswd);
+
+                    return params;
+
+                }
+            }; //End String Request Object
+            queue.add(request); //Se realiza la peticion Volley
         }
     }
+
+    public void cancelar(View view) {
+        Intent intent = new Intent(Registro_Activity2.this, Inicio_Activity.class);
+        startActivity(intent);
+        finish();
+    }
+
+
 }

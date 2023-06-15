@@ -252,7 +252,7 @@
                 android:layout_marginTop="5dp"
                 android:paddingLeft="30dp"
                 android:paddingRight="30dp"
-                android:text="Los pagos se calculan en función de las fichas apostadas. Cada ficha apostada tiene un pago de 5:1, lo que significa que se multiplicará por 5 el valor de cada ficha apostada."
+                android:text="Los pagos se calculan en función de las fichas apostadas. Cada ficha apostada tiene un pago de 35:1, lo que significa que se multiplicará por 35 el valor de cada ficha apostada."
                 android:textColor="@color/white"
                 android:textSize="17sp"
                 tools:ignore="HardcodedText" />

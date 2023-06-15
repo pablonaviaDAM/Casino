@@ -237,12 +237,14 @@
                         tools:ignore="HardcodedText" />
 
                     <TextView
+                        android:id="@+id/tvNombre"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
                         android:paddingStart="30dp"
-                        android:paddingEnd="30dp"                        android:text="Pablo Eric"
+                        android:paddingEnd="30dp"
+                        android:text="Pablo Eric"
                         android:textAlignment="textEnd"
                         android:textColor="@color/white"
                         android:textSize="18sp"
@@ -267,12 +269,14 @@
                         tools:ignore="HardcodedText" />
 
                     <TextView
+                        android:id="@+id/tvApellidos"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
                         android:paddingStart="30dp"
-                        android:paddingEnd="30dp"                        android:text="Navia Lagraba"
+                        android:paddingEnd="30dp"
+                        android:text="Navia Lagraba"
                         android:textAlignment="textEnd"
                         android:textColor="@color/white"
                         android:textSize="18sp"
@@ -297,12 +301,14 @@
                         tools:ignore="HardcodedText" />
 
                     <TextView
+                        android:id="@+id/tvDNI"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
                         android:paddingStart="30dp"
-                        android:paddingEnd="30dp"                        android:text="12345678P"
+                        android:paddingEnd="30dp"
+                        android:text="12345678P"
                         android:textAlignment="textEnd"
                         android:textColor="@color/white"
                         android:textSize="18sp"
@@ -327,12 +333,14 @@
                         tools:ignore="HardcodedText" />
 
                     <TextView
+                        android:id="@+id/tvFechaNacimiento"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
                         android:paddingStart="30dp"
-                        android:paddingEnd="30dp"                        android:text="11/02/2000"
+                        android:paddingEnd="30dp"
+                        android:text="11/02/2000"
                         android:textAlignment="textEnd"
                         android:textColor="@color/white"
                         android:textSize="18sp"
@@ -357,12 +365,14 @@
                         tools:ignore="HardcodedText" />
 
                     <TextView
+                        android:id="@+id/tvEmail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
                         android:paddingStart="30dp"
-                        android:paddingEnd="30dp"                        android:text="pablo@casino.es"
+                        android:paddingEnd="30dp"
+                        android:text="pablo@casino.es"
                         android:textAlignment="textEnd"
                         android:textColor="@color/white"
                         android:textSize="18sp"
@@ -465,7 +475,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="30dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="50dp"
                     android:background="@color/white" />
 
             </LinearLayout>

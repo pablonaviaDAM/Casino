@@ -6,7 +6,7 @@ public class User {
     private String nombre;
     private String apellidos;
     private String DNI;
-    private String fechaNacimiento;
+    private String fecha_nacimiento;
     private String email;
     private String password;
 
@@ -15,14 +15,23 @@ public class User {
 
 
     public User(String nombre, String apellidos,
-                String DNI, String fechaNacimiento,
+                String DNI, String fecha_nacimiento,
                 String email, String password) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.DNI = DNI;
-        this.fechaNacimiento = fechaNacimiento;
+        this.fecha_nacimiento = fecha_nacimiento;
         this.email = email;
         this.password = password;
+    }
+    public User(String nombre, String apellidos,
+                String DNI, String fecha_nacimiento,
+                String email) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.DNI = DNI;
+        this.fecha_nacimiento = fecha_nacimiento;
+        this.email = email;
     }
 
     public String getNombre() {
@@ -49,12 +58,12 @@ public class User {
         this.DNI = DNI;
     }
 
-    public String getFechaNacimiento() {
-        return fechaNacimiento;
+    public String getFecha_nacimiento() {
+        return fecha_nacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setFecha_nacimiento(String fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
     }
 
     public String getEmail() {
