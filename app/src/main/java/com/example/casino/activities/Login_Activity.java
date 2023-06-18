@@ -2,6 +2,7 @@ package com.example.casino.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.casino.R;
 import com.example.casino.models.ApiEndpoints;
+import com.example.casino.models.User;
 import com.example.casino.models.Validation;
 
 import org.json.JSONException;
@@ -81,17 +83,11 @@ public class Login_Activity extends AppCompatActivity {
                                 String fechaNacimiento = (String) response.get("fecha_nacimiento");
                                 String email = (String) response.get("email");
 
-                                //User user = new User(nombre, apellidos, dni, fechaNacimiento, email);
-
+                                User user = new User(nombre, apellidos, dni, fechaNacimiento, email);
+                                Log.i("onResponse", "Usuario:" + user.getNombre() + user.getApellidos() + user.getDNI() + user.getFecha_nacimiento() + user.getEmail());
                                 //Se envian los datos del usuario para que se muestren en su cuenta
-                                Intent enviarDatos = new Intent(Login_Activity.this, CuentaUser.class);
-
-                                enviarDatos.putExtra("nombre", nombre);
-                                enviarDatos.putExtra("apellidos", apellidos);
-                                enviarDatos.putExtra("dni", dni);
-                                enviarDatos.putExtra("fecha_nacimiento", fechaNacimiento);
-                                enviarDatos.putExtra("email", email);
-                                startActivity(enviarDatos);
+                                Intent intent = new Intent(Login_Activity.this, Inicio_Activity2.class);
+                                startActivity(intent);
                                 finish();
 
                             } catch (JSONException e) {

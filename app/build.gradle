@@ -43,10 +43,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    //conectarse a Firebase
-    implementation 'com.google.firebase:firebase-database:20.2.1'
-    implementation 'com.google.firebase:firebase-auth:22.0.0'
-
     //Animacion splah
     implementation 'com.airbnb.android:lottie:6.0.0'
 

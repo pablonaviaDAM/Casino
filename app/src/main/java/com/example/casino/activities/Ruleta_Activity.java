@@ -1,6 +1,5 @@
 package com.example.casino.activities;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -50,6 +49,10 @@ public class Ruleta_Activity extends DrawerBase_Activity {
     private HashMap<Button, Double> valoresApuestaPorBoton = new HashMap<>();
     private List<Button> botonesSeleccionados = new ArrayList<>();
 
+    //Nuevo
+    private ImageView ficha5, ficha10, ficha25, ficha50, ficha100;
+    private HashMap<Integer, Integer> apuestas = new HashMap<>(); // Guarda el id del boton, y la apuesta realizada
+
     ////////// ---------PROBANDO--------- //////////
 
     private static final Random RAMDOM = new Random();
@@ -89,9 +92,17 @@ public class Ruleta_Activity extends DrawerBase_Activity {
         ruleta = findViewById(R.id.ruletaSpin);
         tvNumResults = findViewById(R.id.tvNumResults);
         tvFichasApostadas = findViewById(R.id.tvFichasApostadas);
+
+        //Nuevo------------------------------------------------------
+        ficha5 = findViewById(R.id.imgFicha5);
+        ficha10 = findViewById(R.id.imgFicha10);
+        ficha25 = findViewById(R.id.imgFicha25);
+        ficha50 = findViewById(R.id.imgFicha50);
+        ficha100 = findViewById(R.id.imgFicha100);
     }
 
     public void spinRuleta(View view) {
+
         //CALCULAMOS EL ANGULO ALEATORIO PARA LA ROTACION DE NUESTRA RULETA
         anguloAntiguo = angulo % 360;
         angulo = RAMDOM.nextInt(360) + 720;
@@ -141,7 +152,7 @@ public class Ruleta_Activity extends DrawerBase_Activity {
 
                 //En el caso que el textview no este vacio se anyade un espacio
                 if (!numResults.isEmpty()) {
-                    numGanadorS = " " + numGanadorS;
+                    numGanadorS = " " + numGanadorS + " ";
 
                 }
 
@@ -202,7 +213,6 @@ public class Ruleta_Activity extends DrawerBase_Activity {
 
         saldoGanado.setText(tvFichasApostadas.getText());
 
-
         imgClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -212,8 +222,9 @@ public class Ruleta_Activity extends DrawerBase_Activity {
         dialogVictory.show(); //Nos muestra el dialogo de victoria
     }
 
+
 /*
-    private void empezarPartida() {
+        private void apuestaAceptada() {
 
         //Recoge el saldo de la cuenta y fichas apostadas
         tvSaldoCuenta = findViewById(R.id.tvSaldoCuenta);
@@ -226,48 +237,14 @@ public class Ruleta_Activity extends DrawerBase_Activity {
         }
     }
 
-    public void comprobarApuestaBotones() {
-        for (int botonId : botonesIds) {
-            Button botonApostado = findViewById(botonId);
-
-            //En el caso que este apostado su foreground sera diferente de null
-            if (botonApostado.getForeground() != null) {
-                int numBoton = obtenerNumeroBoton(botonId);
-                double valorApuestaBoton = ;
-            }
-
-        }
-    }
-
     public int obtenerNumeroBoton(int botonId) {
         Button boton = findViewById(botonId);
         String numeroBoton = boton.getText().toString();
 
         return Integer.parseInt(numeroBoton);
     }
-
-    // Este método recoge el valor de apuesta desde un botón
-    private double obtenerValorApuestaDesdeBoton(Button boton) {
-        double valorApuesta = 0;
-
-        if (valoresApuestaPorBoton.containsKey(boton)) {
-            valorApuesta = valoresApuestaPorBoton.get(boton);
-        }
-
-        return valorApuesta;
-    }
-
-    public HashMap<Button, Double> obtenerValoresApuestaPorBoton() {
-        HashMap<Button, Double> valoresApuestaPorBoton = new HashMap<>();
-
-        for (Button boton : botonesSeleccionados) {
-            double valorApuesta = obtenerValorApuestaDesdeBoton(boton);
-            valoresApuestaPorBoton.put(boton, valorApuesta);
-        }
-
-        return valoresApuestaPorBoton;
-    }
 */
+
 
     //ESTE METODO AUMENTARA EL TAMAÑO DE LA FICHA SELECCIONADA
     public void fichaSeleccionada(View view) {
@@ -291,15 +268,64 @@ public class Ruleta_Activity extends DrawerBase_Activity {
         }
     }
 
+    //ESTE METODO NOS DEVUELVE EL VALOR DE LAS FICHAS QUE TIENE EL BOTON BOTON
+    private int obtenerFichasBoton(ImageView fichaSeleccionada) {
+
+        // Devuelve el valor de la ficha correspondiente a la imagen seleccionada
+        int fichaId = fichaSelected.getId();
+
+        switch (fichaId) {
+            case R.id.imgFicha5:
+                return 5;
+            case R.id.imgFicha10:
+                return 10;
+            case R.id.imgFicha25:
+                return 25;
+            case R.id.imgFicha50:
+                return 50;
+            case R.id.imgFicha100:
+                return 100;
+            default:
+                return 0;
+        }
+    }
+
+
     //ESTE METODO NOS PERMITE MOSTRAR EN LOS BOTONES LA FICHA SELECCIONADA
-    @SuppressLint("NonConstantResourceId")
-    public void mostrarFicha(@NonNull View view) {
+    public void mostrarFicha(@NonNull View view) { // Es el onClick de los botones
+
+        Log.i("onResponse", "Id boton" + view.getId());
 
         //Para obtener el id del boton seleccionado
         int buttonId = view.getId();
         botonSeleccionado = findViewById(buttonId);
         Drawable fichaSelected, fichaAjustada;
         Bitmap bitmap;
+
+
+        // Verificar si el botón ya tiene una apuesta guardada
+        if (apuestas.containsKey(view.getId())) {
+            // Si ya hay una apuesta, sumar el valor de la ficha al valor existente
+            int valorApuestaExistente = apuestas.get(buttonId);
+            int nuevoValorApuesta = valorApuestaExistente + obtenerFichasBoton(this.fichaSelected);
+            apuestas.put(buttonId, nuevoValorApuesta);
+
+            // Mostrar todos los valores del HashMap por consola
+            Log.i("onResponse", "Valores del HashMap:");
+            for (Map.Entry<Integer, Integer> entry : apuestas.entrySet()) {
+                int key = entry.getKey();
+                int valor = entry.getValue();
+                Log.i("onResponse", "Botón ID: " + key + ", Apuesta: " + valor);
+            }
+        } else {
+            // Si no hay una apuesta, agregar una nueva apuesta al HashMap
+            int nuevoValorApuesta = obtenerFichasBoton(this.fichaSelected);
+            apuestas.put(buttonId, nuevoValorApuesta);
+
+            // Mostrar mensaje indicando que se agregó una nueva apuesta
+            Log.i("onResponse", "Se agregó una nueva apuesta al HashMap:\n Botón ID: " + buttonId + ", Apuesta: " + nuevoValorApuesta);
+        }
+
 
         // Si no hay ficha seleccionada, no se realiza ninguna acción
         if (this.fichaSelected == null) {
@@ -317,7 +343,7 @@ public class Ruleta_Activity extends DrawerBase_Activity {
                 fichaAjustada = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 350, 500, true));
 
                 botonSeleccionado.setForeground(fichaAjustada);
-                numerosApostados.add(fichaId);
+
                 break;
             case R.id.imgFicha10:
                 fichaSelected = ContextCompat.getDrawable(this, R.drawable.ficha10);
@@ -325,8 +351,6 @@ public class Ruleta_Activity extends DrawerBase_Activity {
                 fichaAjustada = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 350, 500, true));
 
                 botonSeleccionado.setForeground(fichaAjustada);
-
-                numerosApostados.add(fichaId);
 
                 break;
             case R.id.imgFicha25:
@@ -336,8 +360,6 @@ public class Ruleta_Activity extends DrawerBase_Activity {
 
                 botonSeleccionado.setForeground(fichaAjustada);
 
-                numerosApostados.add(fichaId);
-
                 break;
             case R.id.imgFicha50:
                 fichaSelected = ContextCompat.getDrawable(this, R.drawable.ficha50);
@@ -345,8 +367,6 @@ public class Ruleta_Activity extends DrawerBase_Activity {
                 fichaAjustada = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 350, 500, true));
 
                 botonSeleccionado.setForeground(fichaAjustada);
-
-                numerosApostados.add(fichaId);
 
                 break;
             case R.id.imgFicha100:
@@ -356,15 +376,23 @@ public class Ruleta_Activity extends DrawerBase_Activity {
 
                 botonSeleccionado.setForeground(fichaAjustada);
 
-                numerosApostados.add(fichaId);
-
                 break;
             default:
                 // No se establece ningún foreground si la ficha seleccionada no coincide con ninguna de las opciones anteriores
                 botonSeleccionado.setForeground(null);
                 break;
         }
+
+        // Mostrar los datos completos del HashMap por consola
+        for (Map.Entry<Integer, Integer> entry : apuestas.entrySet()) {
+            int buttonKey = entry.getKey();
+            int apuestaValue = entry.getValue();
+            Log.i("onResponse", "Botón ID: " + buttonKey + ", Apuesta: " + apuestaValue);
+        }
+
         recogerValoresFichas();
+
+
     }
 
     // Dependiendo de la ficha seleccionada, el valor total de la apuesta aumentara
@@ -393,6 +421,14 @@ public class Ruleta_Activity extends DrawerBase_Activity {
         }
         tvFichasApostadas.setText(String.valueOf(valorFichasTotales)); //Nos muestra el valor total de las fichas
     }
+
+/*    public void recogerValoresBotones() {
+        int fichaId = fichaSelected.getId();
+
+        switch (fichaId) {
+
+        }
+    }*/
 
     //METODO QUE NOS BORRA LA APUESTA REALIZADA
     public void borrarApuesta(View view) {
